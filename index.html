@@ -624,78 +624,21 @@
 
     <div class="agent-layout">
 
-      <!-- Left: System flow -->
+      <!-- Left: Real architecture diagram -->
       <div class="agent-panel">
-        <div class="agent-panel-label">Architecture</div>
-        <div class="flow">
-          <div class="flow-node highlight">👤 Alex</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-row">
-            <div class="flow-node">💬 Discord</div>
-            <div class="flow-node dim">·</div>
-            <div class="flow-node">🖥️ Terminal</div>
-          </div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node highlight">⚡ OpenClaw Gateway</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node highlight">🦨 Stink — AI Agent</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-row">
-            <div class="flow-node dim">⏰ Crons</div>
-            <div class="flow-node dim">🧠 Memory</div>
-            <div class="flow-node dim">🤖 Sub-agents</div>
-          </div>
-        </div>
-        <p style="color:#555; font-size:0.68rem; margin-top:1rem; line-height:1.5;">Messages from Discord or the terminal route through the gateway to the agent. The agent has persistent memory, schedules cron jobs, and can spawn sub-agents for complex tasks.</p>
+        <div class="agent-panel-label">System Architecture</div>
+        <img src="images/system-diagram.png" alt="AI agent system architecture" style="width:100%; border-radius:8px; border:1px solid #2a2a2a;" />
+        <p style="color:#555; font-size:0.68rem; margin-top:0.75rem; line-height:1.5;">Messages from Discord or the terminal route through the OpenClaw gateway to the agent. Persistent memory, scheduled crons, and sub-agents for heavy lifting.</p>
       </div>
 
-      <!-- Right: Discord mock -->
+      <!-- Right: Real Discord screenshots stacked -->
       <div class="agent-panel">
         <div class="agent-panel-label">Discord — Live Dashboard</div>
-        <div class="dc-mock">
-          <div class="dc-mock-header">
-            <span>🦨</span> Think Station
-          </div>
-          <div class="dc-mock-body">
-            <div class="dc-mock-sidebar">
-              <div class="dc-mock-cat">📡 Intel</div>
-              <div class="dc-mock-ch">🌍 -major-news</div>
-              <div class="dc-mock-ch">🚀 -capabilities</div>
-              <div class="dc-mock-cat">📊 Overview</div>
-              <div class="dc-mock-ch active">📋 -activity-log</div>
-              <div class="dc-mock-ch">🔧 -fixes</div>
-              <div class="dc-mock-ch">💓 -heartbeat</div>
-              <div class="dc-mock-cat">🔨 Projects</div>
-              <div class="dc-mock-ch">🍛 -indian-affair</div>
-              <div class="dc-mock-ch">🔧 -handy-dandy</div>
-              <div class="dc-mock-ch">🎙️ -voice-app</div>
-            </div>
-            <div class="dc-mock-main">
-              <div class="dc-mock-msg">
-                <div class="dc-mock-avatar">🦨</div>
-                <div class="dc-mock-msg-content">
-                  <div class="dc-mock-msg-name">Stink</div>
-                  <div class="dc-mock-msg-text">✅ Heartbeat OK — gateway up, 3 crons running, no alerts.</div>
-                </div>
-              </div>
-              <div class="dc-mock-msg">
-                <div class="dc-mock-avatar">🦨</div>
-                <div class="dc-mock-msg-content">
-                  <div class="dc-mock-msg-name">Stink</div>
-                  <div class="dc-mock-msg-text">📰 <span class="tag">#major-news</span> Fed holds rates — markets calm, crypto flat.</div>
-                </div>
-              </div>
-              <div class="dc-mock-msg">
-                <div class="dc-mock-avatar">🦨</div>
-                <div class="dc-mock-msg-content">
-                  <div class="dc-mock-msg-name">Stink</div>
-                  <div class="dc-mock-msg-text">🔧 Fix deployed — contact details updated on Handy & Dandy site.</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+          <img src="images/discord-1-crop.png" alt="Discord server channels" style="width:100%; border-radius:8px; border:1px solid #2a2a2a;" />
+          <img src="images/discord-2.png" alt="Discord server activity" style="width:100%; border-radius:8px; border:1px solid #2a2a2a; align-self:start;" />
         </div>
-        <p style="color:#555; font-size:0.68rem; margin-top:0.75rem; line-height:1.5;">The Discord server is the agent's public interface — market alerts, project logs, heartbeat status, fixes. Structured so anyone can open it and understand what's happening.</p>
+        <p style="color:#555; font-size:0.68rem; margin-top:0.75rem; line-height:1.5;">The Discord server is the agent's public face — market alerts, project logs, heartbeat status, fixes. Structured so anyone can open it and understand what's happening in real time.</p>
       </div>
 
     </div>
