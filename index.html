@@ -235,7 +235,161 @@
       width: 14px; height: 14px;
     }
 
-    /* DISCORD SECTION */
+    /* AGENT SETUP SECTION */
+    .agent-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .agent-layout { grid-template-columns: 1fr; }
+    }
+    .agent-panel {
+      background: #0f0f0f;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .agent-panel-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    /* Flow diagram */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+    .flow-node {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    .flow-node.highlight {
+      border-color: #D4A43A;
+      color: #D4A43A;
+      background: rgba(212,164,58,0.06);
+    }
+    .flow-node.dim { color: #888; font-size: 0.75rem; }
+    .flow-arrow {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 3px 0;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+    }
+    .flow-row .flow-node { font-size: 0.7rem; padding: 8px 6px; }
+    /* Discord mock */
+    .dc-mock {
+      background: #1e1f22;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.75rem;
+    }
+    .dc-mock-header {
+      background: #2b2d31;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dc-mock-body {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+    }
+    .dc-mock-sidebar {
+      padding: 8px 0;
+      border-right: 1px solid #111;
+    }
+    .dc-mock-cat {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      padding: 8px 10px 4px;
+    }
+    .dc-mock-ch {
+      padding: 3px 10px;
+      color: #72767d;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: default;
+    }
+    .dc-mock-ch.active {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-radius: 4px;
+      margin: 0 4px;
+      padding: 3px 6px;
+    }
+    .dc-mock-main {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dc-mock-msg {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .dc-mock-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #D4A43A, #8a6020);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+    }
+    .dc-mock-msg-content { flex: 1; }
+    .dc-mock-msg-name {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #D4A43A;
+      margin-bottom: 2px;
+    }
+    .dc-mock-msg-text {
+      font-size: 0.68rem;
+      color: #b5bac1;
+      line-height: 1.45;
+    }
+    .dc-mock-msg-text .tag {
+      background: rgba(88,101,242,0.2);
+      color: #8a9cf5;
+      border-radius: 3px;
+      padding: 0 3px;
+    }
+    /* Discord block kept for compat */
     .discord-block {
       background: #111;
       border: 1px solid #1e1e1e;
@@ -468,12 +622,82 @@
     <h2>The AI Agent</h2>
     <p class="section-sub">Running 24/7 on my own hardware. Structured so non-technical people can follow along.</p>
 
-    <div class="discord-block">
-      <p style="color:#aaa; font-size:0.9rem;">How the system is wired together — from Discord and the terminal, through the gateway, down to the agent, cron jobs, memory, and sub-agents.</p>
-      <img src="images/system-diagram.png" alt="AI agent system architecture diagram" style="margin-top: 0.75rem; border-radius: 10px;" />
-      <p style="color:#aaa; font-size:0.9rem; margin-top: 1.5rem;">The Discord server acts as a live dashboard — market news, project logs, fixes, heartbeat status. Anyone can open it and understand exactly what the agent is doing and why.</p>
-      <img src="images/discord-1.png" alt="Discord server layout — AI agent dashboard" />
-      <img src="images/discord-2.png" alt="Discord server channels" style="margin-top: 0.75rem;" />
+    <div class="agent-layout">
+
+      <!-- Left: System flow -->
+      <div class="agent-panel">
+        <div class="agent-panel-label">Architecture</div>
+        <div class="flow">
+          <div class="flow-node highlight">👤 Alex</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-row">
+            <div class="flow-node">💬 Discord</div>
+            <div class="flow-node dim">·</div>
+            <div class="flow-node">🖥️ Terminal</div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node highlight">⚡ OpenClaw Gateway</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node highlight">🦨 Stink — AI Agent</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-row">
+            <div class="flow-node dim">⏰ Crons</div>
+            <div class="flow-node dim">🧠 Memory</div>
+            <div class="flow-node dim">🤖 Sub-agents</div>
+          </div>
+        </div>
+        <p style="color:#555; font-size:0.68rem; margin-top:1rem; line-height:1.5;">Messages from Discord or the terminal route through the gateway to the agent. The agent has persistent memory, schedules cron jobs, and can spawn sub-agents for complex tasks.</p>
+      </div>
+
+      <!-- Right: Discord mock -->
+      <div class="agent-panel">
+        <div class="agent-panel-label">Discord — Live Dashboard</div>
+        <div class="dc-mock">
+          <div class="dc-mock-header">
+            <span>🦨</span> Think Station
+          </div>
+          <div class="dc-mock-body">
+            <div class="dc-mock-sidebar">
+              <div class="dc-mock-cat">📡 Intel</div>
+              <div class="dc-mock-ch">🌍 -major-news</div>
+              <div class="dc-mock-ch">🚀 -capabilities</div>
+              <div class="dc-mock-cat">📊 Overview</div>
+              <div class="dc-mock-ch active">📋 -activity-log</div>
+              <div class="dc-mock-ch">🔧 -fixes</div>
+              <div class="dc-mock-ch">💓 -heartbeat</div>
+              <div class="dc-mock-cat">🔨 Projects</div>
+              <div class="dc-mock-ch">🍛 -indian-affair</div>
+              <div class="dc-mock-ch">🔧 -handy-dandy</div>
+              <div class="dc-mock-ch">🎙️ -voice-app</div>
+            </div>
+            <div class="dc-mock-main">
+              <div class="dc-mock-msg">
+                <div class="dc-mock-avatar">🦨</div>
+                <div class="dc-mock-msg-content">
+                  <div class="dc-mock-msg-name">Stink</div>
+                  <div class="dc-mock-msg-text">✅ Heartbeat OK — gateway up, 3 crons running, no alerts.</div>
+                </div>
+              </div>
+              <div class="dc-mock-msg">
+                <div class="dc-mock-avatar">🦨</div>
+                <div class="dc-mock-msg-content">
+                  <div class="dc-mock-msg-name">Stink</div>
+                  <div class="dc-mock-msg-text">📰 <span class="tag">#major-news</span> Fed holds rates — markets calm, crypto flat.</div>
+                </div>
+              </div>
+              <div class="dc-mock-msg">
+                <div class="dc-mock-avatar">🦨</div>
+                <div class="dc-mock-msg-content">
+                  <div class="dc-mock-msg-name">Stink</div>
+                  <div class="dc-mock-msg-text">🔧 Fix deployed — contact details updated on Handy & Dandy site.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="color:#555; font-size:0.68rem; margin-top:0.75rem; line-height:1.5;">The Discord server is the agent's public interface — market alerts, project logs, heartbeat status, fixes. Structured so anyone can open it and understand what's happening.</p>
+      </div>
+
     </div>
   </section>
 
